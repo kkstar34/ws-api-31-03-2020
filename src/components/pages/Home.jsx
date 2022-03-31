@@ -3,6 +3,7 @@ import NavBar from './../NavBar';
 import Article from './../Article';
 import { useDispatch, useSelector } from 'react-redux';
 import fecthAllProductData from './../../redux/actions';
+import MuiSkeleton from '../MuiSkeleton';
 
 function Home() {
 
@@ -24,36 +25,63 @@ function Home() {
 
   return (
     <div>
-        <NavBar/>
-        {loading === false ? 
-        
+      <NavBar />
 
+      {loading === false ? (
         <div className="ms-2 mt-2">
-            <div className="row">
-
-            
-                {articles.map(article => 
-                    <div className="col-md-3" key={article.id}>
-                        <Article article={article} /> 
-                    </div>
-                )
-                
-                
-                
-                }
-
-            </div>
+          <div className="row">
+            {articles.map((article) => (
+              <div className="col-md-3  mb-2" key={article.id}>
+                <Article article={article} />
+              </div>
+            ))}
+          </div>
         </div>
-    
-    
-        : <div className="spinner-box"><div className='spinner-border spinner' role='status'><span className='visually-hidden'>Loading...</span></div></div> 
-    
-    
-        }
-        
-       
+      ) : (
+        <div>
+          <div className="ms-2 mt-2">
+            <div className="row">
+              <div className="col-md-3 mb-2">
+                <MuiSkeleton />
+              </div>
+
+              <div className="col-md-3">
+                <MuiSkeleton />
+              </div>
+
+              <div className="col-md-3">
+                <MuiSkeleton />
+              </div>
+
+              <div className="col-md-3">
+                <MuiSkeleton />
+              </div>
+
+              <div className="col-md-3">
+                <MuiSkeleton />
+              </div>
+
+              <div className="col-md-3">
+                <MuiSkeleton />
+              </div>
+
+              <div className="col-md-3">
+                <MuiSkeleton />
+              </div>
+
+              <div className="col-md-3">
+                <MuiSkeleton />
+              </div>
+            </div>
+          </div>
+          
+
+         
+        </div>
+      )}
+      {/* <div className="spinner-box"><div className='spinner-border spinner' role='status'><span className='visually-hidden'>Loading...</span></div></div>  */}
     </div>
-  )
+  );
 }
 
 export default Home
